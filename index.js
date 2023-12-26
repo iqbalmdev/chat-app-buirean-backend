@@ -48,7 +48,7 @@ const getUser = (userId) => {
 };
 const io = require("socket.io")(appServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.FRONT_END_PORT,
   },
 });
 io.on('connection',(socket)=>{
@@ -61,8 +61,6 @@ addUser(userId,socket.id)
 io.emit('getUsers',users)
 
   })
-
-
   socket.on("disconnect",()=>{console.log("users disconnected")
   removeUser(socket.id)
 io.emit('getUsers',users)
