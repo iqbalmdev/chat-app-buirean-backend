@@ -9,7 +9,10 @@ const messagesRouter = require("./routes/messagesRouter")
 const app = express()
 // middleware
 app.use(express.json()) // Uncomment this line to enable JSON parsing
-app.use(cors())
+app.use(cors({
+  origin: process.env.FRONT_END_PORT,
+}));
+
 const mongoServer = mongoose.connect(process.env.MONGOOSE_URL)
 .then(() => {
 
