@@ -51,9 +51,10 @@ const getUser = (userId) => {
 };
 const io = require("socket.io")(appServer, {
   cors: {
-    origin: process.env.FRONT_END_PORT,
+    origin: ["http://localhost:3000", "https://buriean-chat.iqbalkhatani.com"],
   },
 });
+
 io.on('connection',(socket)=>{
   console.log('a user connected')
   socket.on('addUser',(userId)=>{
